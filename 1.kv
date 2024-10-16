@@ -1,0 +1,152 @@
+#:kivy 2.3.0
+<HomeScreen>:
+    orientation: 'vertical'
+    padding: dp(20), dp(10)
+    spacing: dp(10)
+
+    canvas.before:
+        # Gradient background
+        Color:
+            rgba: (0.1, 0.2, 0.4, 1)  # Start of gradient (dark blue)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: dp(150)
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.6, 0.8, 1  # Card background
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [dp(20)]
+
+        Label:
+            text: 'Manajemen Program Kerja KKN'
+            font_size: '28sp'
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+        Label:
+            text: 'Kamis, 19 September 2024'
+            font_size: '16sp'
+            color: 0.8, 0.9, 1, 1
+            size_hint_y: None
+            height: dp(30)
+            pos_hint: {'center_x': 0.5}
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(10), dp(20)
+
+        # First Card: Program Management
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(120)
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.6, 0.8, 1  # Card background (blue)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [dp(20)]
+                    
+            Label:
+                text: 'Pengelolaan Program Kerja'
+                font_size: '20sp'
+                bold: True
+                color: 1, 1, 1, 1
+                pos_hint: {'center_x': 0.5}
+
+            Button:
+                text: 'Masuk'
+                size_hint: None, None
+                size: dp(120), dp(40)
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0.2, 0.6, 0.8, 1
+                bold: True
+                on_press: app.manage_program_kerja()
+
+        # Second Card: Budget
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(120)
+            canvas.before:
+                Color:
+                    rgba: 0.8, 0.2, 0.2, 1  # Card background (red)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [dp(20)]
+                    
+            Label:
+                text: 'Anggaran'
+                font_size: '20sp'
+                bold: True
+                color: 1, 1, 1, 1
+                pos_hint: {'center_x': 0.5}
+
+            Button:
+                text: 'Masuk'
+                size_hint: None, None
+                size: dp(120), dp(40)
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0.8, 0.2, 0.2, 1
+                bold: True
+                on_press: app.manage_budget()
+
+        # Third Card: Activity Report
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: dp(120)
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.8, 0.2, 1  # Card background (green)
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [dp(20)]
+                    
+            Label:
+                text: 'Laporan Kegiatan'
+                font_size: '20sp'
+                bold: True
+                color: 1, 1, 1, 1
+                pos_hint: {'center_x': 0.5}
+
+            Button:
+                text: 'Masuk'
+                size_hint: None, None
+                size: dp(120), dp(40)
+                pos_hint: {'center_x': 0.5}
+                background_color: 0.9, 0.9, 0.9, 1
+                color: 0.2, 0.8, 0.2, 1
+                bold: True
+                on_press: app.view_activity_report()
+
+    AnchorLayout:
+        anchor_x: 'center'
+        anchor_y: 'bottom'
+        size_hint_y: None
+        height: dp(60)
+
+        Button:
+            text: 'Keluar'
+            size_hint: None, None
+            size: dp(100), dp(40)
+            background_color: 1, 0.3, 0.3, 1
+            color: 1, 1, 1, 1
+            bold: True
+            on_press: app.quit()

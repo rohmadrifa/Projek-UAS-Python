@@ -1,0 +1,112 @@
+#:kivy 2.3.0
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(5)
+
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 1  # Dark gray background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Title Label
+        Button:
+            size_hint: None, None
+            height: dp(50)
+            widht: dp(50)
+            background_color: 0, 0, 0, 0
+            on_press:
+                print("button pressed")
+                app.root.current = 'login' 
+            Image:
+                source: 'img/kembali.jpg'
+                size_hint: None, None
+                size: self.parent.width * 0.8, self.parent.height * 0.8
+                pos: self.parent.center_x - self.width / 2, self.parent.center_y - self.height / 2
+       
+        Widget:
+            size_hint_y: None
+            height: dp(200) 
+
+        Label:
+            text: "Managemen Program Kerja"
+            font_size: '24sp'
+            bold: True
+            color: 1, 1, 1, 1  # White for contrast
+            size_hint_y: None
+            height: dp(60)  # Height for the title
+            halign: 'left'  # Align text to the left
+            valign: 'middle'  # Vertical align center
+            text_size: self.width, None 
+
+        Label:
+            text: "KKN"
+            font_size: '24sp'
+            bold: True
+            color: 1, 1, 1, 1  # White for contrast
+            size_hint_y: None
+            height: dp(0)  # Height for the title
+            halign: 'left'  # Align text to the left
+            valign: 'middle'  # Vertical align center
+            text_size: self.width, None 
+
+
+        # Buttons Layout
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(20)
+
+            Button:
+                text: "Pengelolaan Program Kerja"
+                size_hint_y: None
+                height: dp(100)
+                background_normal: ''  # Disable default background
+                background_color: 0, 0, 0, 0  # Transparent background to show the RoundedRectangle
+                color: 1, 1, 1, 1  # White text
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.6, 0.8, 1  # Blue color for the button
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [20]  # Rounded corners
+
+            Button:
+                text: "Anggaran"
+                size_hint_y: None
+                height: dp(100)
+                background_normal: ''
+                background_color: 0, 0, 0, 0  # Transparent background to show the RoundedRectangle
+                color: 1, 1, 1, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.8, 0.2, 0.2, 1  # Red color for the button
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [20]
+
+            Button:
+                text: "Laporan Kegiatan"
+                size_hint_y: None
+                height: dp(100)
+                background_normal: ''
+                background_color: 0, 0, 0, 0  # Transparent background to show the RoundedRectangle
+                color: 1, 1, 1, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.8, 0.2, 1  # Green color for the button
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [20]
+            
+                on_press:
+                    self.background_color = 0.2, 0.4, 0.7, 1
+                    print("button pressed")
+                    app.root.current = 'home'  # Efek saat ditekan
+                on_release:
+                    self.background_color = 0.3, 0.5, 0.8, 1  # Mengembalikan warna saat dilepas

@@ -1,0 +1,518 @@
+#:kivy 2.3.0
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(30)
+        spacing: dp(20)
+
+        canvas.before:
+            Color:
+                rgba: 0.25, 0.25, 0.25, 1  # Warna latar belakang lebih gelap
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+                radius: [dp(20), dp(20), dp(20), dp(20)]
+
+        Image:
+            source: 'img/logo1.jpeg'  # Ganti dengan path ke logo Anda
+            size_hint_y: None
+            height: dp(80)
+            # allow_stretch: True
+
+        Label:
+            text: "Welcome Back!"
+            font_size: '28sp'
+            bold: True
+            color: 1, 1, 1, 1  # Putih untuk kontras
+            size_hint_y: None
+            height: dp(50)
+
+        Label:
+            text: "Login to continue"
+            font_size: '16sp'
+            color: 0.8, 0.8, 0.8, 1  # Abu-abu lebih terang untuk subjudul
+            size_hint_y: None
+            height: dp(30)
+
+        TextInput:
+            hint_text: 'Username'
+            size_hint_y: None
+            height: dp(50)
+            background_color: 0.3, 0.3, 0.3, 1  # Latar belakang gelap untuk input
+            foreground_color: 1, 1, 1, 1  # Teks putih
+            hint_text_color: 0.6, 0.6, 0.6, 1  # Warna hint text abu-abu
+            padding: [dp(10), dp(10), dp(10), dp(10)]
+            multiline: False
+            cursor_color: 0.2, 0.6, 0.8, 1  # Warna kursor yang menarik
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 1  # Border lebih jelas
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, dp(10))
+
+        TextInput:
+            hint_text: 'Password'
+            password: True
+            size_hint_y: None
+            height: dp(50)
+            background_color: 0.3, 0.3, 0.3, 1
+            foreground_color: 1, 1, 1, 1
+            hint_text_color: 0.6, 0.6, 0.6, 1
+            padding: [dp(10), dp(10), dp(10), dp(10)]
+            multiline: False
+            cursor_color: 0.2, 0.6, 0.8, 1
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.5, 0.5, 1
+                Line:
+                    width: 1.5
+                    rounded_rectangle: (self.x, self.y, self.width, self.height, dp(10))
+
+        Button:
+            text: 'LOGIN'
+            size_hint_y: None
+            height: dp(50)
+            font_size: '20sp'
+            background_normal: ''
+            background_color: 0, 0, 0, 0  # Biru lebih gelap
+            color: 1, 1, 1, 1  # Teks putih
+            canvas.before:
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]  # Membuat tombol lebih bulat
+
+            on_press:
+                self.background_color = 0.2, 0.4, 0.7, 1
+                print("button pressed")
+                app.root.current = 'home'  # Efek saat ditekan
+            on_release:
+                self.background_color = 0.3, 0.5, 0.8, 1  # Mengembalikan warna saat dilepas
+
+            
+
+        Widget:
+            size_hint_y: None
+            height: dp(20)
+
+        Label:
+            text: "───────── OR ─────────"
+            font_size: '16sp'
+            color: 0.8, 0.8, 0.8, 1  # Warna teks pemisah
+            size_hint_y: None
+            height: dp(30)
+
+        Button:
+            text: 'Create a New Account'
+            size_hint_y: None
+            height: dp(50)
+            font_size: '18sp'
+            background_normal: ''
+            background_color: 0, 0, 0, 0  # Hijau lembut untuk tombol pendaftaran
+            color: 1, 1, 1, 1  # Teks putih
+            canvas.before:
+                Color:
+                    rgba: 0.5, 0.8, 0.5, 1
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [15]  # Membuat tombol lebih bulat
+
+            on_press:
+                self.background_color = 0.4, 0.7, 0.4, 1
+                app.root.current = 'profil'  # Efek saat ditekan
+            on_release:
+                self.background_color = 0.5, 0.8, 0.5, 1  # Mengembalikan warna saat dilepas
+
+
+
+<ProfilScreen>:
+    name: 'profil'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 30
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1  # Background putih bersih
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        # Bagian Header Profil
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.35)
+            padding: [10, 20]
+            spacing: 10
+            canvas.before:
+                Color:
+                    rgba: (0.1, 0.1, 0.1, 1)  # Warna hitam transparan untuk kesan elegan
+                RoundedRectangle:
+                    pos: self.pos
+                    size: self.size
+                    radius: [0, 0, 25, 25]
+
+            Image:
+                source: 'profile_pic.png'  # Ganti dengan gambar profil
+                size_hint: (None, None)
+                size: 150, 150
+                pos_hint: {"center_x": 0.5}
+                allow_stretch: True
+                keep_ratio: True
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    Ellipse:
+                        pos: self.pos
+                        size: self.size
+                canvas.after:
+                    Color:
+                        rgba: 0, 0, 0, 0.2  # Bayangan gambar profil yang lebih lembut
+                    Ellipse:
+                        pos: (self.x + 8, self.y - 8)
+                        size: self.size
+
+            Label:
+                text: 'Nama Lengkap'
+                font_size: 28
+                bold: True
+                color: 1, 1, 1, 1
+                pos_hint: {"center_x": 0.5}
+                size_hint_y: None
+                height: 50
+
+        # Bagian Input Profil
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.6)
+            spacing: 20
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, None)
+                height: 60
+
+                Label:
+                    text: 'Nama Lengkap'
+                    font_size: 18
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: 25
+
+                TextInput:
+                    id: name_input
+                    hint_text: 'Masukkan nama lengkap'
+                    size_hint_y: None
+                    height: 40
+                    font_size: 16
+                    padding: [10, 10]
+                    background_color: 0.97, 0.97, 0.97, 1  # Latar belakang putih bersih
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    multiline: False
+                    radius: [10, 10, 10, 10]
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, None)
+                height: 60
+
+                Label:
+                    text: 'Gmail'
+                    font_size: 18
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: 25
+
+                TextInput:
+                    id: email_input
+                    hint_text: 'Masukkan Gmail'
+                    size_hint_y: None
+                    height: 40
+                    font_size: 16
+                    padding: [10, 10]
+                    background_color: 0.97, 0.97, 0.97, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    multiline: False
+                    radius: [10, 10, 10, 10]
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, None)
+                height: 60
+
+                Label:
+                    text: 'Nomor Telepon'
+                    font_size: 18
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: 25
+
+                TextInput:
+                    id: phone_input
+                    hint_text: 'Masukkan nomor telepon'
+                    size_hint_y: None
+                    height: 40
+                    font_size: 16
+                    padding: [10, 10]
+                    background_color: 0.97, 0.97, 0.97, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    multiline: False
+                    radius: [10, 10, 10, 10]
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, None)
+                height: 80
+
+                Label:
+                    text: 'Alamat'
+                    font_size: 18
+                    color: 0.1, 0.1, 0.1, 1
+                    size_hint_y: None
+                    height: 25
+
+                TextInput:
+                    id: address_input
+                    hint_text: 'Masukkan alamat lengkap'
+                    size_hint_y: None
+                    height: 60
+                    font_size: 16
+                    padding: [10, 10]
+                    background_color: 0.97, 0.97, 0.97, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    multiline: True
+                    radius: [10, 10, 10, 10]
+
+        # Bagian Tombol Aksi
+        BoxLayout:
+            size_hint: (1, 0.15)
+            spacing: 15
+
+            Button:
+                text: 'Simpan'
+                background_color: (0.2, 0.6, 0.4, 1)  # Warna hijau lebih lembut dan modern
+                color: 1, 1, 1, 1
+                font_size: 18
+                bold: True
+                background_normal: ''
+                background_down: ''
+                size_hint_y: None
+                height: 50
+                radius: [25, 25, 25, 25] 
+                on_press:
+                    print("akun berhasil dibuat")
+                    app.root.current = 'login'
+
+            Button:
+                text: 'Batal'
+                background_color: (0.9, 0.1, 0.1, 1)  # Warna merah modern
+                color: 1, 1, 1, 1
+                font_size: 18
+                bold: True
+                background_normal: ''
+                background_down: ''
+                size_hint_y: None
+                height: 50
+                radius: [25, 25, 25, 25]
+                on_press:
+                    print("batal membuat akun")
+                    app.root.current = 'login'
+
+
+<PengelolaanProgramKerja>:
+    orientation: 'vertical'
+    padding: [dp(20), dp(40), dp(20), dp(40)]
+    spacing: dp(10)
+
+    canvas.before:
+        Color:
+            rgba: 0.9, 0.9, 0.9, 1  # Warna latar belakang abu-abu terang
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: 'Pengelolaan Program Kerja'
+        font_size: '24sp'
+        bold: True
+        color: 0.2, 0.2, 0.6, 1  # Warna biru tua untuk judul
+        size_hint_y: None
+        height: dp(50)
+
+    Button:
+        text: 'Hari 1: Gotong royong membersihkan sampah'
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(50)
+        background_color: 0.2, 0.6, 0.8, 1  # Warna latar belakang biru
+        color: 1, 1, 1, 1  # Warna teks putih
+        background_normal: ''
+
+    Button:
+        text: 'Hari 2: Bimbingan belajar untuk anak anak SD'
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(50)
+        background_color: 0.2, 0.6, 0.8, 1
+        color: 1, 1, 1, 1
+        background_normal: ''
+
+    Button:
+        text: 'Hari 3: Kampanye kesehatan'
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(50)
+        background_color: 0.2, 0.6, 0.8, 1
+        color: 1, 1, 1, 1
+        background_normal: ''
+
+    Button:
+        text: 'Hari 4: Berkunjung ke UMKM'
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(50)
+        background_color: 0.2, 0.6, 0.8, 1
+        color: 1, 1, 1, 1
+        background_normal: ''
+
+    Button:
+        text: 'Hari 5: Senam pagi bersama warga desa'
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(50)
+        background_color: 0.2, 0.6, 0.8, 1
+        color: 1, 1, 1, 1
+        background_normal: ''
+
+    Button:
+        text: 'Hari 6: Penanaman bibit pohon'
+        font_size: '16sp'
+        size_hint_y: None
+        height: dp(50)
+        background_color: 0.2, 0.6, 0.8, 1
+        color: 1, 1, 1, 1
+        background_normal: ''
+
+<MyGrid>:
+    cols: 3
+    size_hint_y: None
+    height: dp(400)
+    
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.4, 0.6, 1  # Dark teal for header background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    Label:
+        text: "Hari"
+        size_hint_x: None
+        width: 50
+        bold: True
+        color: 1, 1, 1, 1  # White text for headers
+    
+    Label:
+        text: "Jenis Kegiatan"
+        size_hint_x: None
+        width: 200
+        bold: True
+        color: 1, 1, 1, 1
+    
+    Label:
+        text: "Anggaran yang\ndikeluarkan"
+        size_hint_x: None
+        width: 150
+        bold: True
+        color: 1, 1, 1, 1
+
+    # Sample data
+    Label:
+        text: "1"
+        size_hint_x: None
+        width: 50
+        color: 0.9, 0.9, 0.9, 1
+
+    Label:
+        text: "Perlengkapan Kebersihan"
+        color: 1, 1, 1, 1
+
+    Label:
+        text: "170000"
+        size_hint_x: None
+        width: 150
+        color: 0.9, 0.9, 0.9, 1
+
+    Label:
+        text: "2"
+        size_hint_x: None
+        width: 50
+        color: 0.9, 0.9, 0.9, 1
+
+    Label:
+        text: "Alat-alat Tulis untuk Mengajar"
+        color: 1, 1, 1, 1
+
+    Label:
+        text: "125000"
+        size_hint_x: None
+        width: 150
+        color: 0.9, 0.9, 0.9, 1
+
+    # Add more rows as needed
+
+<MyApp>:
+    GridLayout:
+        cols: 1
+        padding: dp(10)
+        spacing: dp(10)
+        
+        canvas.before:
+            Color:
+                rgba: 0.95, 0.95, 0.95, 1  # Light gray for main layout background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Anggaran Kegiatan"
+            font_size: '24sp'
+            bold: True
+            color: 0.2, 0.3, 0.5, 1  # Soft dark blue color for title
+            size_hint_y: None
+            height: dp(50)
+            halign: 'center'
+            valign: 'middle'
+            text_size: self.size
+
+        Label:
+            text: "Total anggaran awal: Rp 15.000.000"
+            size_hint_y: None
+            height: dp(40)
+            color: 0.2, 0.3, 0.5, 1  # Dark blue for text
+
+        ScrollView:
+            MyGrid:
+
+        Label:
+            text: "Sisa anggaran: Rp 13.455.000"
+            size_hint_y: None
+            height: dp(40)
+            color: 0.2, 0.3, 0.5, 1  # Dark blue for text
+
+        GridLayout:
+            cols: 2
+            size_hint_y: None
+            height: dp(50)
+
+            Button:
+                text: "-"
+                background_color: 0.2, 0.6, 0.8, 1
+                color: 1, 1, 1, 1
+
+            Button:
+                text: "+"
+                background_color: 0.2, 0.6, 0.8, 1
+                color: 1, 1, 1, 1

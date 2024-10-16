@@ -1,0 +1,100 @@
+#:kivy 2.3.0
+<CreateAccountScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.1, 0.2, 0.4, 1  # Dark blue background
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [30]
+
+        AnchorLayout:
+            anchor_x: 'center'
+            anchor_y: 'center'
+
+            BoxLayout:
+                orientation: 'vertical'
+                padding: dp(20)
+                spacing: dp(15)
+                size_hint: 0.9, None
+                height: dp(500)
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 0.1
+
+                Image:
+                    source: 'logo.png'
+                    size_hint: None, None
+                    size: dp(80), dp(80)
+                    pos_hint: {'center_x': 0.5}
+
+                Label:
+                    text: "Buat Akun"
+                    font_size: '28sp'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    size_hint_y: None
+                    height: dp(60)
+
+                TextInput:
+                    id: name_input
+                    hint_text: "Nama Lengkap"
+                    multiline: False
+                    size_hint: 1, None
+                    height: dp(50)
+                    background_color: 1, 1, 1, 0.1
+                    foreground_color: 1, 1, 1, 1
+                    cursor_color: 1, 1, 1, 1
+                    padding: dp(15), dp(10)
+
+                TextInput:
+                    id: email_input
+                    hint_text: "Email"
+                    multiline: False
+                    size_hint: 1, None
+                    height: dp(50)
+                    background_color: 1, 1, 1, 0.1
+                    foreground_color: 1, 1, 1, 1
+                    cursor_color: 1, 1, 1, 1
+                    padding: dp(15), dp(10)
+
+                TextInput:
+                    id: password_input
+                    hint_text: "Kata Sandi"
+                    multiline: False
+                    password: True
+                    size_hint: 1, None
+                    height: dp(50)
+                    background_color: 1, 1, 1, 0.1
+                    foreground_color: 1, 1, 1, 1
+                    cursor_color: 1, 1, 1, 1
+                    padding: dp(15), dp(10)
+
+                TextInput:
+                    id: confirm_password_input
+                    hint_text: "Konfirmasi Kata Sandi"
+                    multiline: False
+                    password: True
+                    size_hint: 1, None
+                    height: dp(50)
+                    background_color: 1, 1, 1, 0.1
+                    foreground_color: 1, 1, 1, 1
+                    cursor_color: 1, 1, 1, 1
+                    padding: dp(15), dp(10)
+
+                ShadowButton:
+                    text: "Buat Akun"
+                    size_hint: 1, None
+                    height: dp(60)
+                    on_press: root.create_account()
+
+                Button:
+                    text: "Sudah punya akun? Masuk"
+                    size_hint: 1, None
+                    height: dp(40)
+                    background_normal: ''
+                    background_color: 0, 0, 0, 0
+                    color: 0.6, 0.7, 1, 1
+                    font_size: '14sp'
+                    underline: True
